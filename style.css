@@ -35,3 +35,8 @@ p {
     display: inline-block;
     margin: 5vw;
 }
+
+#weather {
+    font-size: 5vh;
+    margin: 1vw;
+}
