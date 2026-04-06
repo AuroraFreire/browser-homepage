@@ -3,7 +3,7 @@
     height: 100vh;
     background-position: center;
     background-size: cover;
-    text-align: right;
+    text-align: center;
     display: flow-root;
 }
 
@@ -39,4 +39,66 @@ p {
 #weather {
     font-size: 5vh;
     margin: 1vw;
+}
+
+.pokesearch {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    margin: 5vw;
+    padding: 1vw;
+    width: 22vw;
+}
+
+#poketitle {
+    text-align: center;
+    margin-bottom: 0.5vw;
+}
+
+#pokeinput-row {
+    display: flex;
+    gap: 0.5vw;
+    justify-content: center;
+}
+
+#pokeinput {
+    border-radius: 8px;
+    border: none;
+    padding: 0.4vw 0.6vw;
+    font-size: 1.5vh;
+    width: 70%;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+#pokebtn {
+    border-radius: 8px;
+    border: none;
+    padding: 0.4vw 0.8vw;
+    font-size: 1.5vh;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.85);
+    font-weight: bold;
+}
+
+#pokebtn:hover {
+    background: white;
+}
+
+#pokenresult {
+    margin-top: 0.5vw;
+    text-align: center;
+}
+
+#pokenresult img {
+    width: 8vw;
+    image-rendering: pixelated;
+}
+
+#pokenresult p {
+    font-size: 1.8vh;
+    margin: 0.2vw;
 }

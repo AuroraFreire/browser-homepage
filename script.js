@@ -1,6 +1,9 @@
 const background = document.getElementById("background");
 const timeEl = document.getElementById("time");
 const weatherEl = document.getElementById("weather");
+const pokeinput = document.getElementById("pokeinput");
+const pokebtn = document.getElementById("pokebtn");
+const pokenresult = document.getElementById("pokenresult");
 
 async function getBackground() {
     const res = await fetch("https://api.thecatapi.com/v1/images/search");
@@ -42,8 +45,33 @@ function initWeather() {
     }
 }
 
+async function searchPokemon() {
+    const name = pokeinput.value.trim().toLowerCase();
+    if (!name) return;
+    pokenresult.innerHTML = "<p>loading...</p>";
+    try {
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon/" + name);
+        if (!res.ok) throw new Error("not found");
+        const data = await res.json();
+        const sprite = data.sprites.front_default;
+        const hp = data.stats[0].base_stat;
+        const types = data.types.map(t => t.type.name).join(", ");
+        pokenresult.innerHTML =
+            "<img src='" + sprite + "' alt='" + data.name + "' />" +
+            "<p><b>" + data.name.toUpperCase() + "</b></p>" +
+            "<p>Type: " + types + "</p>" +
+            "<p>HP: " + hp + "</p>";
+    } catch (err) {
+        pokenresult.innerHTML = "<p>pokemon not found :(</p>";
+    }
+}
+
 getBackground();
 initWeather();
+pokebtn.addEventListener("click", searchPokemon);
+pokeinput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") searchPokemon();
+});
 
 setInterval(() => {
     const now = new Date();
